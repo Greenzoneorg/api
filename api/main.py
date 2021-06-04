@@ -1,10 +1,11 @@
 import logging
+import os
 
 import uvicorn
 from fastapi import FastAPI
 
-from . import __env
-
+from __env import ENVS
+import product_api
 from rich.logging import RichHandler
 
 FORMAT = "%(message)s"
@@ -18,11 +19,18 @@ log.info("Hello, World!")
 
 app = FastAPI()
 
+os.system("pip install uvicorn")
 
 @app.get("/")
 async def root():
-    return {"message": "Hello World"}
+    return {"status": ENVS['STATUS']}
+
+
+@app.get("/products/{id}")
+async def product(id: str) -> dict:
+    return product_api.get_product(id)
+    
 
 def start():
     """Launched with `poetry run start` at root level"""
-    uvicorn.run("api.main:app", host=__env.ENVS["HOST"], port=8000, reload=True)
+    uvicorn.run("api.main:app", host=ENVS["HOST"], port=8000, reload=True)
