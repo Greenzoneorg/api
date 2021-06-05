@@ -17,6 +17,11 @@ db = deta.Base("products")
 #
 
 
+async def get_all() -> dict:
+    await return db.fetch(query=None, buffer=None)
+    
+
+
 def get_product(id: str) -> Union[dict, HTTPException]:
     '''
     Get the product from the DB and return it. If the id is invalid, return error.
@@ -27,5 +32,5 @@ def get_product(id: str) -> Union[dict, HTTPException]:
     try:
         product = next(db.fetch({"productId": id}))[0] # get the product from the db
     except IndexError:
-        raise HTTPException(status_code=404, detail="Product not found") #if product is not found, return error
+        raise HTTPException(status_code=404, message="Product not found") #if product is not found, return error
     return product

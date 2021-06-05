@@ -25,6 +25,10 @@ async def root():
     return {"status": "BUILDING+TESTING"}
 
 
+@app.get("/products")
+async def products() -> dict:
+    return product_api.get_all()
+
 
 # Product Route
 @app.get("/products/{id}")

@@ -11,6 +11,7 @@ python-dotenv = "^0.17.1"
 rich = "^10.2.2"
 deta = "^0.8"
 uvicorn = {extras = ["standard"], version = "^0.14.0"}
+pydantic = "^1.8.2"
 
 [tool.poetry.dev-dependencies]
 black = "21.5b2"
