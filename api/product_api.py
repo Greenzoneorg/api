@@ -23,9 +23,9 @@ def get_product(id: str) -> Union[dict, HTTPException]:
     :param: id: str
     :return: dict or HTTPException
     '''
-    global db
+    global db #get the db
     try:
-        product = next(db.fetch({"productId": id}))[0]
+        product = next(db.fetch({"productId": id}))[0] # get the product from the db
     except IndexError:
-        raise HTTPException(status_code=404, detail="Product not found")
+        raise HTTPException(status_code=404, detail="Product not found") #if product is not found, return error
     return product
