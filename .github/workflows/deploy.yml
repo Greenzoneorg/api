@@ -2,7 +2,7 @@ name: 'Deploy to Deta'
 on: [push]
 jobs:
   runs:
-    runs-on: windows
+    runs-on: windows-latest
     steps:
       # Install Deta CLI as per docs
       # https://docs.deta.sh/docs/cli/install
