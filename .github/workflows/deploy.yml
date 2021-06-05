@@ -1,5 +1,6 @@
 name: 'Deploy to Deta'
 description: 'Simple GitHub Action to deploy current repo to a Deta Micro'
+on: [push]
 
 runs:
   using: "composite"
