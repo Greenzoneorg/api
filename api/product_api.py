@@ -17,8 +17,8 @@ db = deta.Base("products")
 #
 
 
-async def get_all() -> dict:
-    await return db.fetch(query=None, buffer=None)
+def get_all() -> dict:
+    return db.fetch(query=None, buffer=None)
     
 
 

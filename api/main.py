@@ -1,7 +1,7 @@
 import logging #import stuff
 import os
 import uvicorn
-from fastapi import FastAPI
+from fastapi import FastAPI, Form
 from rich.logging import RichHandler
 
 from __env import ENVS
@@ -39,6 +39,11 @@ async def product(id: str) -> dict:
     '''
     return product_api.get_product(id)
 
+
+@app.post("/addProduct/")
+async def add_product(username: str = Form(...), password: str = Form(...)):
+    return [username, password]
+    
 
 # start the fastapi
 def start():
