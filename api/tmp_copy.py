@@ -2,7 +2,7 @@ from deta import Deta
 
 from __env import ENVS
 
-
+#! FILE TO TEST ADDING STUFF TO THE DB
 deta = Deta(ENVS["DETA_KEY"])
 db = deta.Base("product")
 
