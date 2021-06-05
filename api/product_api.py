@@ -3,7 +3,7 @@ from deta import Deta
 
 from typing import Union
 from __env import ENVS
-
+from random import randint
 from fastapi import HTTPException
 #connect to db
 deta = Deta(ENVS["DETA_KEY"])
@@ -19,7 +19,28 @@ db = deta.Base("products")
 
 def get_all() -> dict:
     return db.fetch(query=None, buffer=None)
-    
+
+
+def add_product(name: str, imgLink: str,disc: str,keyWords: str,materials: str, isReuse: str, isRecycle: str, howtoRe: str) -> bool:
+    db.insert(
+    {
+        "productId": name+str(randint(1,100)),
+        "userId": "00001",
+        "fields": {
+            "name":name,
+            "imgLink": imgLink,
+            "details": {
+                "description": disc,
+                "keyWords": keyWords,
+                "materials": materials,
+                "isReuse": isReuse,
+                "isRecycle": isRecycle,
+                "howtoRe": howtoRe,
+            },
+        },
+    }
+    return True
+)
 
 
 def get_product(id: str) -> Union[dict, HTTPException]:

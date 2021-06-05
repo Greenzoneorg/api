@@ -41,8 +41,9 @@ async def product(id: str) -> dict:
 
 
 @app.post("/addProduct/")
-async def add_product(username: str = Form(...), password: str = Form(...)):
-    return [username, password]
+async def add_product(name: str = Form(...), imgLink: str = Form(...),disc: str = Form(...),keyWords: str = Form(...),materials: str = Form(...), isReuse: str = Form(...), isRecycle: str = Form(...), howtoRe: str = Form(...) ):
+    add_product(name, imgLink, disc, keyWords, materials, isReuse, isRecycle, howtoRe)
+    return "added (hopefully)"
     
 
 # start the fastapi
