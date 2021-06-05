@@ -9,5 +9,5 @@ jobs:
       - uses: BogDAAAMN/deta-deploy-action@v1.0.0
         with:
           deta-access-token: ${{ secrets.DETA_ACCESS_TOKEN }} #Deta access token https://docs.deta.sh/docs/cli/auth
-          deta-name: 'micro-name' #Deta Micro name https://docs.deta.sh/docs/cli/commands/#deta-clone
-          deta-project: 'project-name' #Deta project name https://docs.deta.sh/docs/cli/commands/#deta-clone
+          deta-name: 'api' #Deta Micro name https://docs.deta.sh/docs/cli/commands/#deta-clone
+          deta-project: 'Makerfestival2021' #Deta project name https://docs.deta.sh/docs/cli/commands/#deta-clone
