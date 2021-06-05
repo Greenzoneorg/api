@@ -18,7 +18,7 @@ jobs:
         shell: bash
         run: |
           export DETA_ACCESS_TOKEN=${{ secrets.DETA_ACCESS_TOKEN }}
-          deta clone --name api --project Makerfestival2021
+          ~/.deta/bin/deta clone --name api --project Makerfestival2021
 
       # Using the access token, deploy the project to Deta
       # https://docs.deta.sh/docs/cli/commands#deta-deploy
@@ -26,4 +26,5 @@ jobs:
         shell: bash
         run: |
           export DETA_ACCESS_TOKEN=${{ secrets.DETA_ACCESS_TOKEN }}
+          cd api
           ~/.deta/bin/deta deploy
