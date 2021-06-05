@@ -15,7 +15,7 @@ jobs:
       # https://docs.deta.sh/docs/cli/commands#deta-clone
       - name: Clone Deta Metadata
         run: |
-          set DETA_ACCESS_TOKEN=${{ secrets.DETA_ACCESS_TOKEN }}
+          $env:DETA_ACCESS_TOKEN = '${{ secrets.DETA_ACCESS_TOKEN }}'
           C:\Users\runneradmin\.deta\bin\deta.exe clone --name api --project Makerfestival2021
 
       - name: Create env file
@@ -26,6 +26,6 @@ jobs:
       # https://docs.deta.sh/docs/cli/commands#deta-deploy
       - name: Deploy to Deta 
         run: |
-          set DETA_ACCESS_TOKEN=${{ secrets.DETA_ACCESS_TOKEN }}
+          $env:DETA_ACCESS_TOKEN = '${{ secrets.DETA_ACCESS_TOKEN }}'
           cd api
           C:\Users\runneradmin\.deta\bin\deta.exe deploy
