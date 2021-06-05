@@ -28,7 +28,3 @@ jobs:
         run: |
           export DETA_ACCESS_TOKEN=${{ secrets.DETA_ACCESS_TOKEN }}
           ~/.deta/bin/deta deploy
-
-branding:
-  icon: check-circle
-  color: purple
