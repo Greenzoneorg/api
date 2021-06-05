@@ -39,8 +39,9 @@ def add_product(name: str, imgLink: str,disc: str,keyWords: str,materials: str, 
             },
         },
     }
+    )
     return True
-)
+
 
 
 def get_product(id: str) -> Union[dict, HTTPException]:
