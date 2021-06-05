@@ -23,7 +23,7 @@ app = FastAPI()
 @app.get("/")
 async def root():
     '''Api fuction for the route "/". Returns status.'''
-    return {"status": ENVS["STATUS"], "env": is_in()}
+    return {"status": "BUILDING+TESTING", "env": is_in()}
 
 
 # Product Route
@@ -39,7 +39,7 @@ async def product(id: str) -> dict:
 # start the fastapi
 def start():
     """Launched with `poetry run start` at root level"""
-    uvicorn.run("main:app", host=ENVS["HOST"], port=8000, reload=True)
+    uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)
 
 if __name__ == "__main__":
     start()
