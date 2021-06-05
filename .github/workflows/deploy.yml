@@ -7,7 +7,6 @@ jobs:
       # Install Deta CLI as per docs
       # https://docs.deta.sh/docs/cli/install
       - name: Install Deta CLI
-        shell: batch
         run: |
           iwr https://get.deta.dev/cli.ps1 -useb | iex
 
@@ -15,20 +14,17 @@ jobs:
       # clone the micro and copy .deta metadata folder to use it in deploy
       # https://docs.deta.sh/docs/cli/commands#deta-clone
       - name: Clone Deta Metadata
-        shell: batch
         run: |
           set DETA_ACCESS_TOKEN=${{ secrets.DETA_ACCESS_TOKEN }}
           deta clone --name api --project Makerfestival2021
 
       - name: Create env file
-        shell: batch
         run: |
           echo DETA_KEY=${{ secrets.DETA_KEY }} >> ./api/env.dev
 
       # Using the access token, deploy the project to Deta
       # https://docs.deta.sh/docs/cli/commands#deta-deploy
       - name: Deploy to Deta 
-        shell: batch
         run: |
           set DETA_ACCESS_TOKEN=${{ secrets.DETA_ACCESS_TOKEN }}
           cd api
