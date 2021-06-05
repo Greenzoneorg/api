@@ -5,7 +5,7 @@ import uvicorn
 from fastapi import FastAPI
 from rich.logging import RichHandler
 
-from __env import ENVS
+from __env import ENVS, is_in
 import product_api
 
 # set up logging
@@ -23,7 +23,7 @@ app = FastAPI()
 @app.get("/")
 async def root():
     '''Api fuction for the route "/". Returns status.'''
-    return {"status": ENVS["STATUS"]}
+    return {"status": ENVS["STATUS"], "env": is_in()}
 
 
 # Product Route

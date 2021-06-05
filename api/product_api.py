@@ -8,13 +8,14 @@ from fastapi import HTTPException
 from dotenv import load_dotenv
 from pathlib import Path
 
-dotenv_path = Path('./env.dev')
+dotenv_path = Path('./api/env.dev')
 load_dotenv(dotenv_path=dotenv_path)
 
+    
 
 #connect to db
-deta = Deta(ENVS["DETA_KEY"])
-db = deta.Base("products")
+#deta = Deta(ENVS["DETA_KEY"])
+#db = deta.Base("products")
 
 
 # productId

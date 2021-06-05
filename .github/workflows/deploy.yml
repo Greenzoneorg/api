@@ -3,7 +3,7 @@ on: [push]
 jobs:
   runs:
     runs-on: ubuntu-latest
-    steps: 
+    steps:
       # Install Deta CLI as per docs
       # https://docs.deta.sh/docs/cli/install
       - name: Install Deta CLI
@@ -25,7 +25,6 @@ jobs:
         shell: bash
         run: |
           echo DETA_KEY=${{ secrets.DETA_KEY }} >> ./api/env.dev
-          cat ./api/env.dev
 
       # Using the access token, deploy the project to Deta
       # https://docs.deta.sh/docs/cli/commands#deta-deploy
