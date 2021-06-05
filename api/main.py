@@ -39,4 +39,7 @@ async def product(id: str) -> dict:
 # start the fastapi
 def start():
     """Launched with `poetry run start` at root level"""
-    uvicorn.run("api.main:app", host=ENVS["HOST"], port=8000, reload=True)
+    uvicorn.run("main:app", host=ENVS["HOST"], port=8000, reload=True)
+
+if __name__ == "__main__":
+    start()
