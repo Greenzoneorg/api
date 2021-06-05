@@ -14,6 +14,7 @@ jobs:
       - name: Create env file
         shell: bash
         run: |
+          ls
           echo DETA_KEY=${{ secrets.DETA_KEY }} >> ./api/env.dev
 
       # Using the access token, deploy the project to Deta
