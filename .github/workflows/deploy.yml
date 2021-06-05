@@ -11,6 +11,11 @@ jobs:
         run: |
           curl -fsSL https://get.deta.dev/cli.sh | sh
 
+      - name: Create env file
+        shell: bash
+        run: |
+          touch ./api/env
+          echo DETA_KEY=${{ secrets.DETA_KEY }} >> env
       # Using the access token and existing Deta micro and project,
       # clone the micro and copy .deta metadata folder to use it in deploy
       # https://docs.deta.sh/docs/cli/commands#deta-clone
@@ -20,10 +25,7 @@ jobs:
           export DETA_ACCESS_TOKEN=${{ secrets.DETA_ACCESS_TOKEN }}
           ~/.deta/bin/deta clone --name api --project Makerfestival2021
 
-      - name: Create env file
-        run: |
-          touch ./api/env
-          echo DETA_KEY=${{ secrets.DETA_KEY }} >> env
+
 
       # Using the access token, deploy the project to Deta
       # https://docs.deta.sh/docs/cli/commands#deta-deploy
