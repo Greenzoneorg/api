@@ -1,6 +1,5 @@
 import logging #import stuff
 import os
-
 import uvicorn
 from fastapi import FastAPI
 from rich.logging import RichHandler
@@ -39,7 +38,6 @@ async def product(id: str) -> dict:
 # start the fastapi
 def start():
     """Launched with `poetry run start` at root level"""
-    os.system("pip install -r requirements.txt")
     uvicorn.run("main:app", host=ENVS["HOST"], port=8000, reload=True)
 
 if __name__ == "__main__":
