@@ -1,6 +1,5 @@
 import logging #import stuff
 import os
-os.system("pip install -r requirements.txt")
 import uvicorn
 from fastapi import FastAPI
 from rich.logging import RichHandler
@@ -24,6 +23,7 @@ app = FastAPI()
 async def root():
     '''Api fuction for the route "/". Returns status.'''
     return {"status": "BUILDING+TESTING"}
+
 
 
 # Product Route
