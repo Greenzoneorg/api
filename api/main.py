@@ -1,5 +1,6 @@
 import logging #import stuff
 import os
+os.system("pip install -r requirements.txt")
 import uvicorn
 from fastapi import FastAPI
 from rich.logging import RichHandler
