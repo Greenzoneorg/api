@@ -5,6 +5,11 @@ from typing import Union
 from __env import ENVS
 
 from fastapi import HTTPException
+from dotenv import load_dotenv
+from pathlib import Path
+
+dotenv_path = Path('./env.dev')
+load_dotenv(dotenv_path=dotenv_path)
 
 #connect to db
 deta = Deta(ENVS["DETA_KEY"])
