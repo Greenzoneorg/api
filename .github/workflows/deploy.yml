@@ -21,6 +21,8 @@ jobs:
       - name: Create env file
         run: |
           echo "DETA_KEY=${{ secrets.DETA_KEY }}" >> ./api/env.dev
+          type envcp.dev >> env.dev
+
 
       # Using the access token, deploy the project to Deta
       # https://docs.deta.sh/docs/cli/commands#deta-deploy
