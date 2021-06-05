@@ -11,6 +11,7 @@ from pathlib import Path
 dotenv_path = Path('./env.dev')
 load_dotenv(dotenv_path=dotenv_path)
 
+
 #connect to db
 deta = Deta(ENVS["DETA_KEY"])
 db = deta.Base("products")
