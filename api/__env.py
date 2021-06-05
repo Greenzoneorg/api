@@ -9,7 +9,3 @@ ENVS = {
     **dotenv_values("env"),  # load sensitive variables
     **environ,  # override loaded values with environment variables
 }
-
-
-def is_in() -> bool:
-    return "DETA_KEY" in ENVS

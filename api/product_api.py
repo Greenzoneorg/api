@@ -14,8 +14,8 @@ load_dotenv(dotenv_path=dotenv_path)
     
 
 #connect to db
-#deta = Deta(ENVS["DETA_KEY"])
-#db = deta.Base("products")
+deta = Deta(ENVS["DETA_KEY"])
+db = deta.Base("products")
 
 
 # productId
