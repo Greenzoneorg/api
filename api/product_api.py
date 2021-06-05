@@ -5,8 +5,8 @@ from typing import Union
 from __env import ENVS
 
 
-deta = Deta(ENVS['DETA_KEY'])
-db = deta.Base('products')
+deta = Deta(ENVS["DETA_KEY"])
+db = deta.Base("products")
 
 
 # productId
@@ -16,11 +16,10 @@ db = deta.Base('products')
 #
 
 
-def get_product(id: str) -> Union[dict,str]:
+def get_product(id: str) -> Union[dict, str]:
     global db
     try:
         prodcut = next(db.fetch({"productId": id}))[0]
     except IndexError:
         return "Product Not Found"
     return prodcut
-

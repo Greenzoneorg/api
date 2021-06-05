@@ -1,36 +1,42 @@
-import logging
+import logging #import stuff
 import os
 
 import uvicorn
 from fastapi import FastAPI
+from rich.logging import RichHandler
 
 from __env import ENVS
 import product_api
-from rich.logging import RichHandler
 
+# set up logging
 FORMAT = "%(message)s"
 logging.basicConfig(
     level="NOTSET", format=FORMAT, datefmt="[%X]", handlers=[RichHandler()]
 )
-
 log = logging.getLogger("rich")
 log.info("Hello, World!")
 
-
+# initalize the api
 app = FastAPI()
 
-os.system("pip install uvicorn")
-
+# Home route
 @app.get("/")
 async def root():
-    return {"status": ENVS['STATUS']}
+    '''Api fuction for the route "/". Returns status.'''
+    return {"status": ENVS["STATUS"]}
 
 
+# Product Route
 @app.get("/products/{id}")
 async def product(id: str) -> dict:
+    '''Api function for the route "/products/{id}.
+        :return: dict.
+        :param: id: str    
+    '''
     return product_api.get_product(id)
-    
 
+
+# start the fastapi
 def start():
     """Launched with `poetry run start` at root level"""
     uvicorn.run("api.main:app", host=ENVS["HOST"], port=8000, reload=True)

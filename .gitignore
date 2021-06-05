@@ -139,3 +139,5 @@ cython_debug/
 
 */.env.dev
 ./.env.dev
+*/env.dev
+./env.dev
