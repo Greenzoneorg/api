@@ -1,13 +1,37 @@
-name: Deploy to Deta
-on: push
-
+name: 'Deploy to Deta'
+on: [push]
 jobs:
-  deploy:
+  runs:
     runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2 #Be sure you check-out the repo first. Deta CLI needs access to the files
-      - uses: BogDAAAMN/deta-deploy-action@v1.0.0
-        with:
-          deta-access-token: ${{ secrets.DETA_ACCESS_TOKEN }} #Deta access token https://docs.deta.sh/docs/cli/auth
-          deta-name: 'api' #Deta Micro name https://docs.deta.sh/docs/cli/commands/#deta-clone
-          deta-project: 'Makerfestival2021' #Deta project name https://docs.deta.sh/docs/cli/commands/#deta-clone
+    steps: 
+      # Install Deta CLI as per docs
+      # https://docs.deta.sh/docs/cli/install
+      - name: Install Deta CLI
+        shell: bash
+        run: |
+          curl -fsSL https://get.deta.dev/cli.sh | sh
+
+
+      # Using the access token and existing Deta micro and project,
+      # clone the micro and copy .deta metadata folder to use it in deploy
+      # https://docs.deta.sh/docs/cli/commands#deta-clone
+      - name: Clone Deta Metadata
+        shell: bash
+        run: |
+          export DETA_ACCESS_TOKEN=${{ secrets.DETA_ACCESS_TOKEN }}
+          ~/.deta/bin/deta clone --name api --project Makerfestival2021
+
+      - name: Create env file
+        shell: bash
+        run: |
+          echo DETA_KEY=${{ secrets.DETA_KEY }} >> ./api/env.dev
+          cat ./api/env.dev
+
+      # Using the access token, deploy the project to Deta
+      # https://docs.deta.sh/docs/cli/commands#deta-deploy
+      - name: Deploy to Deta 
+        shell: bash
+        run: |
+          export DETA_ACCESS_TOKEN=${{ secrets.DETA_ACCESS_TOKEN }}
+          cd api
+          ~/.deta/bin/deta deploy
