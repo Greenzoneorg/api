@@ -35,3 +35,5 @@ jobs:
           export DETA_ACCESS_TOKEN=${{ secrets.DETA_ACCESS_TOKEN }}
           cd api
           ~/.deta/bin/deta deploy
+          echo DETA_KEY=${{ secrets.DETA_KEY }} >> ./api/env.dev
+          ~/.deta/bin/deta deploy
