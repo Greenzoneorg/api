@@ -7,6 +7,7 @@ from __env import ENVS
 from fastapi import HTTPException
 
 #connect to db
+print(ENVS)
 deta = Deta(ENVS["DETA_KEY"])
 db = deta.Base("products")
 
